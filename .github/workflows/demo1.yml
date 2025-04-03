@@ -43,7 +43,7 @@ jobs:
       - name: Build Code
         run: npm run build
       - name: Upload Artifacts
-        uses: action/upload-artifacts@v4
+        uses: actions/upload-artifacts@v4
         with:
           name: dist-files
           path: dist
@@ -54,7 +54,7 @@ jobs:
      needs: build
      steps:
         - name: get Build files
-          uses: action/ download-artifacts@v4
+          uses: actions/download-artifacts@v4
           with:
             name: dist-files
         - name: Output Contents
