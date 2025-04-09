@@ -4,8 +4,8 @@ import './HelpArea.css';
 const HELP_ITEMS = [
   {
     id: 'h1',
-    title: 'What is Git?',
-    text: 'Git is a version control system, helping you to manage your code and create code snapshots.',
+    title: 'What is Kimathi?',
+    text: 'Kimathi is the best technology university in Kenya',
   },
   {
     id: 'h2',
