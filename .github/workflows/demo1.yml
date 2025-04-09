@@ -57,12 +57,24 @@ jobs:
           uses: actions/download-artifact@v4
           with:
             name: dist-files
+            path: ./dist
+
         - name: Output Contents
           run: ls
         
-      # - name: Deploy
-      #   run: echo " ${{env.MyPAss}}"
-      # - name: Print Secrets
-      #   run: echo "${{secrets.TEST}}"
-      # - name: Print Secrets
-      #   run: echo "${{secrets.PORT}}"
+        - name: Deploy site
+          id: deploy
+          uses: ./.github/actions
+          env:
+            AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+            AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          with:
+            bucket: dktcohort 
+            dist-folder: ./dist
+            buket-region: us-east-2
+
+        - name: Output information
+          run: |
+            echo "Live URL: ${{steps.deploy.outputs.website-url}}"
+
+        
